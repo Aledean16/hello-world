@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tequila Forever — Tradición y excelencia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home" aria-label="Inicio">Tequila Forever</a>
+    <nav aria-label="Principal">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menú</button>
+      <ul id="menu" class="nav-list" aria-expanded="false">
+        <li><a href="#catalogo">Productos</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-toggle" onclick="toggleCart()" aria-label="Carrito de compras">
+        🛒
+        <span id="cart-count" class="cart-count" style="display: none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Tradición que perdura, sabor que inspira</h1>
+      <p>Tequilas y mezcales artesanales con estándares de calidad premium.</p>
+      <button id="ver-catalogo" class="btn-primary">Explorar productos</button>
+    </section>
+
+    <section id="catalogo" class="catalogo" aria-labelledby="catalogo-title">
+      <h2 id="catalogo-title">Catálogo</h2>
+      <div class="grid">
+        <!-- Los productos se cargan dinámicamente desde la base de datos -->
+        <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+          <p>Cargando productos...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel de Control / Dashboard -->
+    <section id="dashboard" class="dashboard" aria-labelledby="dashboard-title">
+      <h2 id="dashboard-title">Panel de Control</h2>
+      
+      <!-- Tabs de navegación -->
+      <div class="dashboard-tabs">
+        <button class="tab-btn active" onclick="switchDashboardTab('usuarios')">👥 Usuarios</button>
+        <button class="tab-btn" onclick="switchDashboardTab('proyectos')">📋 Proyectos</button>
+        <button class="tab-btn" onclick="switchDashboardTab('tareas')">✓ Tareas</button>
+      </div>
+
+      <!-- Tab: Usuarios -->
+      <div id="tab-usuarios" class="dashboard-tab active">
+        <div class="dashboard-controls">
+          <h3>Gestionar Usuarios</h3>
+          <button class="btn-primary" onclick="openUsuarioForm()">+ Nuevo Usuario</button>
+        </div>
+        <div id="usuarios-list" class="table-container">
+          <p>Cargando usuarios...</p>
+        </div>
+      </div>
+
+      <!-- Tab: Proyectos -->
+      <div id="tab-proyectos" class="dashboard-tab">
+        <div class="dashboard-controls">
+          <h3>Gestionar Proyectos</h3>
+          <button class="btn-primary" onclick="openProyectoForm()">+ Nuevo Proyecto</button>
+        </div>
+        <div id="proyectos-list" class="table-container">
+          <p>Cargando proyectos...</p>
+        </div>
+      </div>
+
+      <!-- Tab: Tareas -->
+      <div id="tab-tareas" class="dashboard-tab">
+        <div class="dashboard-controls">
+          <h3>Gestionar Tareas</h3>
+          <button class="btn-primary" onclick="openTareaForm()">+ Nueva Tarea</button>
+        </div>
+        <div id="tareas-list" class="table-container">
+          <p>Cargando tareas...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="historia" class="historia" aria-labelledby="historia-title">
+      <h2 id="historia-title">Nuestra historia</h2>
+      <p>Desde el corazón de Jalisco, honramos el agave y el oficio con procesos cuidadosos y respeto por la tierra.</p>
+    </section>
+
+    <section id="contacto" class="contacto" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto</h2>
+      <p>¿Tienes dudas? Escríbenos y te responderemos pronto.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Secundaria">
+      <a href="#terminos">Términos</a>
+      <a href="#privacidad">Privacidad</a>
+    </nav>
+    <small>© 2026 Tequila Forever</small>
+  </footer>
+
+  <!-- Carrito lateral -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-content-wrapper">
+      <div class="cart-header">
+        <h2>Carrito de compras</h2>
+        <button class="close-cart" onclick="toggleCart()" aria-label="Cerrar carrito">×</button>
+      </div>
+      <div id="empty-cart" class="empty-cart" style="display: none;">
+        <p>Tu carrito está vacío</p>
+        <button class="btn-primary" onclick="toggleCart()">Seguir comprando</button>
+      </div>
+      <div id="cart-content">
+        <div id="cart-items" class="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total" class="total-amount">$0</span>
+          </div>
+          <button class="btn-primary checkout-btn" onclick="checkout()">Finalizar compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="api-service.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

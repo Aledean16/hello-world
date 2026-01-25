@@ -1,0 +1,23 @@
+{
+  "name": "tequila-forever-app",
+  "version": "1.0.0",
+  "description": "Tienda en línea Tequila Forever con base de datos SQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "init-db": "node init-db.js"
+  },
+  "keywords": [
+    "tequila",
+    "tienda",
+    "ecommerce"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.0.2"
+  }
+}
